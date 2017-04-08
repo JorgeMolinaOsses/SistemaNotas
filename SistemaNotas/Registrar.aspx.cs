@@ -23,7 +23,8 @@ namespace SistemaNotas
         {
             if (txtUsuario.Text != "" && txtContrasena.Text != "" && txtRut.Text != "" && txtApellido.Text != "")
             {
- using (SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1DL4HOU;Initial Catalog=SistemaNotas;Integrated Security=True"))
+ using (SqlConnection conn = new SqlConnection(ConfigurationManager
+          .ConnectionStrings["SistemaNotasConnectionString"].ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
