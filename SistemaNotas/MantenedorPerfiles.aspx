@@ -6,21 +6,21 @@
     </div>
     <br />
      <div class="row">
-         <div class ="table">
-             <table>
+         <div class="col-md-12">
+             <table  class="table">
                    <thead>
                        <tr>
+                            <td>Rut</td>
                              <td>Nombre</td>
                              <td>Apellido</td>
-                             <td></td>
-                             <td></td>
-                             <td></td>
-                             <td></td>
+                             <td>Sexo</td>
+                             <td>Rol</td>
                          </tr>
-
+                      
                    </thead>
-                 <tbody id="tbody">
-                     <% Response.Write(datosTable()); %>
+                 <tbody runat="server" id="tbody">
+                     <asp:DropDownList runat="server"></asp:DropDownList>
+                      <% Response.Write(datosTable());  %>
                  </tbody>
              </table>
            

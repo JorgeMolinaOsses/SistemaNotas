@@ -22,8 +22,9 @@ namespace SistemaNotas
         {
 
         }
-        public void datosTable()
+        public string datosTable()
         {
+            string response = "";
             SqlDataReader reader; 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager
           .ConnectionStrings["SistemaNotasConnectionString"].ConnectionString))
@@ -36,16 +37,32 @@ namespace SistemaNotas
                     {
                         conn.Open();
                         reader =  cmd.ExecuteReader();
+                        int count = 0;
                         while (reader.Read())
                         {
-                            MessageBox.Show(reader["Nombre"].ToString());
-                        }
 
+                            response += "<tr>"+"<td>"+reader["Rut"]+"</td>"+
+                                "<td>" + reader["Nombre"] + "</td>" +
+                                "<td>" + reader["Apellido"] + "</td>" +
+                                "<td>" + reader["Sexo"] + "</td>" +
+                                "<td>" +
+                                "<asp:DropDownList runat='server' ID ='slcRol" +count+"' CssClass='form-control'>"+
+                                "<asp:ListItem Value='Apoderado'>Apoderado</asp:ListItem>" +
+                                 "<asp:ListItem Value='Administrador'>Administrador</asp:ListItem>" +
+                                  "<asp:ListItem Value='Docente'>Apoderado</asp:ListItem>" +
+                                "</asp:DropDownList >" +"<td>"+
+                                "<tr>" ;
+
+                            count++;
+                        }
+                        return response;
                     }
                     catch (SqlException ex)
                     {
+                      
                         MessageBox.Show(ex.Message.ToString(), "Error Message");
                     }
+                    return response;
                 }
 
             }
