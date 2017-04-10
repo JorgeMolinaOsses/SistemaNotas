@@ -27,17 +27,18 @@ namespace SistemaNotas
         [ScriptMethod(UseHttpGet = true)]
         public void Rol()
         {
-            var request = Context.Request;
+          var request =  Context.Request;
             NameValueCollection formVariables = request.Form;
-
+            SqlDataReader reader;
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
                     cmd.CommandText = @"UPDATE dbo.Usuarios SET Rol = " + formVariables.Get(0) +
-                        " WHERE Rut = " + formVariables.Get(1);
+                        " WHERE Rut = "+formVariables.Get(1);
                     
+
                     try
                     {
                         conn.Open();
@@ -48,7 +49,7 @@ namespace SistemaNotas
                     {
                         Console.WriteLine(ex.Message);
                     }
-                }
+                
             }
 
 
