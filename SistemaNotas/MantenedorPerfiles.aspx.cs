@@ -12,10 +12,11 @@ namespace SistemaNotas
 {
     public partial class MantenedorPerfiles : System.Web.UI.Page
     {
-       
+
+     
         protected void Page_Load(object sender, EventArgs e)
         {
-
+         
         }
 
         protected void btnAlumnos_Click(object sender, EventArgs e)
@@ -40,16 +41,43 @@ namespace SistemaNotas
                         int count = 0;
                         while (reader.Read())
                         {
+                            var defaultRol = reader["Rol"].ToString();
+                            var slcOptions = "";
+                            if (defaultRol == "")
+                            {
+                                slcOptions = "<option selected='selected' value='' >Aun Sin Asignar</option>" +
+                                        "<option value='1'>Apoderado</option>" +
+                                             "<option value='2'>Administrador</option>" +
+                                              "<option value='3'>Docente</option>";
+                            }
+                            else if (defaultRol == "1") {
+                                slcOptions = "<option value='' >Aun Sin Asignar</option>" +
+                                        "<option selected='selected' value='1'>Apoderado</option>" +
+                                             "<option value='2'>Administrador</option>" +
+                                              "<option value='3'>Docente</option>";
+
+                            }
+                            else if (defaultRol == "2") {
+                                slcOptions = "<option value='' >Aun Sin Asignar</option>" +
+                                        "<option value='1'>Apoderado</option>" +
+                                             "<option selected='selected' value='2'>Administrador</option>" +
+                                              "<option value='3'>Docente</option>";
+                            }
+                            else if (defaultRol == "3") {
+                                slcOptions = "<option value='' >Aun Sin Asignar</option>" +
+                                        "<option value='1'>Apoderado</option>" +
+                                             "<option value='2'>Administrador</option>" +
+                                              "<option selected='selected' value='3'>Docente</option>";
+                            }
+
 
                             response += "<tr class='fila"+count+"'>"+ "<td id= 'td1'>" + reader["Rut"]+"</td>"+
                                 "<td id= 'td2'>" + reader["Nombre"] + "</td>" +
                                 "<td id= 'td3'>" + reader["Apellido"] + "</td>" +
                                 "<td id= 'td4'>" + reader["Sexo"] + "</td>" +
                                 "<td id= 'td5'>" +
-                                "<select id ='slcRol" +count+"' data-numero='"+count+"' class='form-control'>"+
-                                "<option value='Apoderado'>Apoderado</option>" +
-                                "<option value='Administrador'>Administrador</option>" +
-                                "<option value='Docente'>Docente</option>" +
+                                
+                                "<select id ='slcRol" +count+"' data-numero='"+count+"' class='form-control'>"+ slcOptions +
                                 "</select>" +"<td>"+
                                 "<tr>" ;
 

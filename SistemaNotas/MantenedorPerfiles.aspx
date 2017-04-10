@@ -42,7 +42,6 @@
                     },
                     contentType: "application/x-www-form-urlencoded",
                     success: function (data) {
-                        alert(data);
                     }
                });
                
