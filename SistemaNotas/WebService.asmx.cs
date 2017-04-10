@@ -37,8 +37,7 @@ namespace SistemaNotas
                     cmd.Connection = conn;
                     cmd.CommandText = @"UPDATE dbo.Usuarios SET Rol = " + formVariables.Get(0) +
                         " WHERE Rut = " + formVariables.Get(1);
-
-
+                    
                     try
                     {
                         conn.Open();
