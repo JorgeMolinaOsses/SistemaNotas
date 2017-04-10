@@ -27,8 +27,11 @@
      </div>
     <script>
         $(document).ready(function () {
-
-            $("select").change(function () {
+            var previous;
+            $("select").on('focus', function () {
+                
+                previous = this.value;
+            }).change(function () {
 
                 var numerofila = $(this).attr("data-numero");
                 var rut = $(".fila" + numerofila + " #td1").text();
@@ -38,7 +41,8 @@
                     async: false,
                     data: {
                         "Value": $(this).val(),
-                        "Rut": rut
+                        "Rut": rut,
+                        "DefaultValue": previous
                     },
                     contentType: "application/x-www-form-urlencoded",
                     success: function (data) {
