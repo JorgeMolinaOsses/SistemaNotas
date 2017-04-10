@@ -19,15 +19,35 @@
                       
                    </thead>
                  <tbody runat="server" id="tbody">
-                     <asp:DropDownList runat="server"></asp:DropDownList>
-                      <% Response.Write(datosTable());  %>
+                     <%  Response.Write(getTable());    %>
                  </tbody>
              </table>
            
          </div>   
      </div>
     <script>
+        $(document).ready(function () {
 
+            $("select").change(function () {
+
+                var numerofila = $(this).attr("data-numero");
+                var rut = $(".fila" + numerofila + " #td1").text();
+             $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/Rol",
+                    async: false,
+                    data: {
+                        "Value": $(this).val(),
+                        "Rut": rut
+                    },
+                    contentType: "application/x-www-form-urlencoded",
+                    success: function (data) {
+                        alert(data);
+                    }
+               });
+               
+            })
+        });
 
     </script>
 </asp:Content>

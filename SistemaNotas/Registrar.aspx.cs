@@ -29,11 +29,11 @@ namespace SistemaNotas
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = @"INSERT INTO dbo.Usuarios(Usuario,Contrasena,Rut,Nombre,Apellido,Sexo) VALUES(@param1,@param2,@param3,@param4,@param5,@param6)";
+                    cmd.CommandText = @"INSERT INTO dbo.Usuarios(Rut,Usuario,Contrasena,Nombre,Apellido,Sexo) VALUES(@param1,@param2,@param3,@param4,@param5,@param6)";
 
-                    cmd.Parameters.AddWithValue("@param1", txtUsuario.Text);
-                    cmd.Parameters.AddWithValue("@param2", txtContrasena.Text);
-                    cmd.Parameters.AddWithValue("@param3", txtRut.Text);
+                    cmd.Parameters.AddWithValue("@param1", txtRut.Text);
+                    cmd.Parameters.AddWithValue("@param2", txtUsuario.Text);
+                    cmd.Parameters.AddWithValue("@param3", txtContrasena.Text);
                     cmd.Parameters.AddWithValue("@param4", txtNombre.Text);
                     cmd.Parameters.AddWithValue("@param5", txtApellido.Text);
                     cmd.Parameters.AddWithValue("@param6", txtSexo.SelectedValue);

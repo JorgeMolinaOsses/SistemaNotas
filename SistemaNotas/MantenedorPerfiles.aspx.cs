@@ -22,7 +22,7 @@ namespace SistemaNotas
         {
 
         }
-        public string datosTable()
+        public string getTable()
         {
             string response = "";
             SqlDataReader reader; 
@@ -41,16 +41,16 @@ namespace SistemaNotas
                         while (reader.Read())
                         {
 
-                            response += "<tr>"+"<td>"+reader["Rut"]+"</td>"+
-                                "<td>" + reader["Nombre"] + "</td>" +
-                                "<td>" + reader["Apellido"] + "</td>" +
-                                "<td>" + reader["Sexo"] + "</td>" +
-                                "<td>" +
-                                "<asp:DropDownList runat='server' ID ='slcRol" +count+"' CssClass='form-control'>"+
-                                "<asp:ListItem Value='Apoderado'>Apoderado</asp:ListItem>" +
-                                 "<asp:ListItem Value='Administrador'>Administrador</asp:ListItem>" +
-                                  "<asp:ListItem Value='Docente'>Apoderado</asp:ListItem>" +
-                                "</asp:DropDownList >" +"<td>"+
+                            response += "<tr class='fila"+count+"'>"+ "<td id= 'td1'>" + reader["Rut"]+"</td>"+
+                                "<td id= 'td2'>" + reader["Nombre"] + "</td>" +
+                                "<td id= 'td3'>" + reader["Apellido"] + "</td>" +
+                                "<td id= 'td4'>" + reader["Sexo"] + "</td>" +
+                                "<td id= 'td5'>" +
+                                "<select id ='slcRol" +count+"' data-numero='"+count+"' class='form-control'>"+
+                                "<option value='Apoderado'>Apoderado</option>" +
+                                "<option value='Administrador'>Administrador</option>" +
+                                "<option value='Docente'>Docente</option>" +
+                                "</select>" +"<td>"+
                                 "<tr>" ;
 
                             count++;
